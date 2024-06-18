@@ -43,6 +43,7 @@ class BankManager:
         account = self.check_account(account_num)
         if account:
             print(account)
+            return True
     
     def check_account(self, account):
         for accounts in self.accounts:
@@ -58,6 +59,8 @@ class BankManager:
             account1.withdraw(amount)
             account2.deposite(amount)
             print("Tranfer Successful")
+    
+    
                         
                        
                         
