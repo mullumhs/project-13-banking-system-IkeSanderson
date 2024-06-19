@@ -44,14 +44,14 @@ class Account:
     
     def deposite(self, amount):
         self._balance += amount
-        print(f"Deposited ${amount}")
+  
     
     def withdraw(self, amount):
         if amount > self._balance:
             raise ValueError("Account Balance Too Low")
         else:
             self._balance -= amount
-            print(f"Withdrew ${amount}")
+
 
 
 

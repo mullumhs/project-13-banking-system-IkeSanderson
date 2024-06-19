@@ -5,9 +5,11 @@
 # Date: 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 from account import Account
+from transactions import Transaction
 class BankManager:
     def __init__(self):
         self.accounts = []
+        self.transactions = []
     
     def add_account(self, account):
         self.accounts.append(account)
@@ -16,6 +18,7 @@ class BankManager:
         account = self.check_account(account_num)
         if account:
             account.deposite(amount)
+            self.transaction_log(account_num, "Deposite", amount)
             return True
             
         print("Account Not Found")
@@ -26,6 +29,7 @@ class BankManager:
         if account:
             try:
                 account.withdraw(amount)
+                self.transaction_log(account_num, "Withdraw", amount)
                 return True
                 
             except:
@@ -57,9 +61,19 @@ class BankManager:
         account2 = self.check_account(account_num2)
         if account1 and account2:        
             account1.withdraw(amount)
+            self.transaction_log(account_num1, "Withdraw", amount)
             account2.deposite(amount)
+            self.transaction_log(account_num2, "Deposite", amount)
             print("Tranfer Successful")
     
+    def transaction_log(self, account_num, transaction_type, amount):
+        self.transactions.append(Transaction(account_num, transaction_type, amount))
+    
+    def print_log(self):
+        for transactions in self.transactions:
+            print(transactions)
+        
+
     
                         
                        
@@ -76,3 +90,4 @@ bank.transfer(1234, 4321, 10)
 bank.search_account(1234)
 bank.search_account(4321)
 
+bank.print_log()
