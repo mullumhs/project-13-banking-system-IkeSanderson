@@ -24,10 +24,10 @@ def withdraw_ui(bank):
     if bank.withdraw(account_num, amount):
         print(f"Withdrew:${amount}")
        
-def deposite_ui(bank):
+def deposit_ui(bank):
     account_num = get_int("Enter the Account Number:")
-    amount = get_int("Enter the Amount to Deposite:")
-    if bank.deposite(account_num, amount):
+    amount = get_int("Enter the Amount to Deposit:")
+    if bank.deposit(account_num, amount):
         print(f"Deposited:${amount}")
 
 
@@ -55,7 +55,7 @@ def main():
 
     bank = BankManager()
 
-    actions = {'1': add_account_ui, '2': withdraw_ui, '3': deposite_ui, '4': transfer_ui, '5': search_account_ui,'6': print_log_ui}
+    actions = {'1': add_account_ui, '2': withdraw_ui, '3': deposit_ui, '4': transfer_ui, '5': search_account_ui,'6': print_log_ui}
    
     os.system('cls')
     
@@ -63,7 +63,7 @@ def main():
         print(f"Bank Management System")
         print("1. Add Account")
         print("2. Withdraw")
-        print("3. Deposite")
+        print("3. Deposit")
         print("4. Transfer")
         print("5. Search")
         print("6. Transaction Log")

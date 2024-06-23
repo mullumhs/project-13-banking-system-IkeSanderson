@@ -12,12 +12,17 @@ class BankManager:
         self.transactions = []
     
     def add_account(self, account):
+        for accounts in self.accounts:
+            if account.get_number == account:
+                print("Account Already Exists")
+                return False
         self.accounts.append(account)
+        return True
 
-    def deposite(self, account_num, amount):
+    def deposit(self, account_num, amount):
         account = self.check_account(account_num)
         if account:
-            account.deposite(amount)
+            account.deposit(amount)
             self.transaction_log(account_num, "Deposite", amount)
             return True
             
@@ -62,8 +67,8 @@ class BankManager:
         if account1 and account2:        
             account1.withdraw(amount)
             self.transaction_log(account_num1, "Withdraw", amount)
-            account2.deposite(amount)
-            self.transaction_log(account_num2, "Deposite", amount)
+            account2.deposit(amount)
+            self.transaction_log(account_num2, "Deposit", amount)
             print("Tranfer Successful")
     
     def transaction_log(self, account_num, transaction_type, amount):

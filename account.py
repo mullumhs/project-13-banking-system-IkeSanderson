@@ -16,6 +16,7 @@ class Account:
             raise ValueError("Name Cannot Be Empty")    
         self._number = new_number
 
+
     
     def get_number(self):
         return self._number
@@ -42,7 +43,7 @@ class Account:
     def __str__(self):
         return f"Account Number:{self.get_number()}, {self.get_name()} {self.get_balance()}"
     
-    def deposite(self, amount):
+    def deposit(self, amount):
         self._balance += amount
   
     
